@@ -1,0 +1,40 @@
+<form (ngSubmit)="create()">
+  <nb-card>
+    <nb-card-header>
+      Create Tap
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+            <label class="label">Name:</label>
+            <input nbInput name="tap.name">
+          </div>
+          <div class="form-group">
+            <label class="label">Target Url:</label>
+            <input nbInput name="tap.targeturl">
+          </div>
+          <div class="form-group">
+            <label class="label">Staus:</label>
+            <nb-select matRipple class="position-select">
+              <!-- <nb-option *ngFor="let p of positions"  [value]="p" matRipple>{{ p }}</nb-option> -->
+              <nb-option value="a" matRipple>Teste</nb-option>
+              <nb-option value="b" matRipple>Teste 2</nb-option>
+            </nb-select>
+          </div>
+          <div>
+            <nb-checkbox >Ativo</nb-checkbox>
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+  
+    <nb-card-footer>
+      <button nbButton type="submit" status="primary">Create</button>
+    </nb-card-footer>
+  </nb-card>
+
+</form>
+
+
+<!-- <input nbInput [(ngModel)]="name" name="tap.name"> -->

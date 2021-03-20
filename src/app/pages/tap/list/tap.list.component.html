@@ -1,0 +1,19 @@
+<nb-card>
+  <nb-card-header>
+    Tap List
+  </nb-card-header>
+
+  <nb-card-body>
+    <div class="buttons-row">
+      <button nbButton matRipple status="primary" (click)="create()">
+        Create
+      </button>
+      <br>
+    </div>
+  </nb-card-body>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
