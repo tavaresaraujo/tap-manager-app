@@ -16,8 +16,11 @@ export class TapService extends BaseService {
     constructor(private http: HttpClient) { super() }
 
     GetTaps(): Observable<any> { return this.http.get(this.UrlTapService + 'taps/'); }
-
     CreateTap(tap): Observable<any> {return this.http.post(this.UrlTapService + 'taps/', JSON.stringify(tap), super.GetHeaderJson()); }
+
+    GetBeverages(): Observable<any> { return this.http.get(this.UrlTapService + 'beverages/'); }
+    GetBeveragePrices(code: string): Observable<any> { return this.http.get(this.UrlTapService + 'beverages/' + code + "/beverage-price"); }
+
 
     // DesempenhoMetasEmpresa(dataAvaliacao: any): any {
     //     return this.http

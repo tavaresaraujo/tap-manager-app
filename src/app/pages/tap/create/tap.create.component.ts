@@ -13,37 +13,32 @@ import { TapService } from '../../../../services/tap.service';
 
 export class TapCreateComponent  {
 
-  tap: Tap;
-  name: string;
+  public readonly materialTheme$: Observable<boolean>;
 
+  tap: Tap;
+  bevarage: Bevarage[];
+  bevaragePrice: BevaragePrice[];
+
+  
   public constructor(private service: TapService,
     private readonly themeService: NbThemeService) {
-    this.materialTheme$ = this.themeService.onThemeChange()
-      .pipe(map(theme => {
-        const themeName: string = theme?.name || '';
-        return themeName.startsWith('material');
-      }));
+
+      this.materialTheme$ = this.themeService.onThemeChange()
+        .pipe(map(theme => {
+          const themeName: string = theme?.name || '';
+          return themeName.startsWith('material');
+        }));
+
+      this.service.GetBeverages().subscribe(data => { this.bevarage = data});
   }
 
   create() {
 		//this.spinner.show();
-
-    // let tap: any ={
-    //   name: "Pelo site",
-    //   TargetUrl: "teste",
-    //   BeveragePriceCode: "bvp_6KlB0PnU3fBDe5P9"
-    // };
-
-    let teste : any;
-    
-    console.log(this.tap)
-  
-
-		this.service.CreateTap(this.tap).subscribe( result => {teste = result});
+    let response : any;
+		this.service.CreateTap(this.tap).subscribe( result => {response = result});
 	}
 
-
-  public readonly materialTheme$: Observable<boolean>;
-
-
+  loadBevaragePrice(event) {
+    this.service.GetBeverages().subscribe(data => { this.bevaragePrice = data});
+  }
 }

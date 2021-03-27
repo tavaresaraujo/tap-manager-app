@@ -8,18 +8,29 @@
         <div class="col-md-6 col-sm-12">
           <div class="form-group">
             <label class="label">Name:</label>
-            <input nbInput name="tap.name">
+            <input nbInput name="tap.name" required>
           </div>
           <div class="form-group">
             <label class="label">Target Url:</label>
-            <input nbInput name="tap.targeturl">
+            <input nbInput name="tap.targeturl" required>
+          </div>
+          <ng-container >
+            <p class="caption status-danger" >
+              Username is required!
+            </p>
+          </ng-container>
+
+
+          <div class="form-group">
+          <label class="label">Beverage:</label>
+            <nb-select placeholder="- Select -" matRipple class="position-select" (selectedChange)="loadBevaragePrice($event)">
+              <nb-option *ngFor="let item of bevarage"  [value]="item.code" matRipple>{{ item.name }}</nb-option>
+            </nb-select>
           </div>
           <div class="form-group">
-            <label class="label">Staus:</label>
-            <nb-select matRipple class="position-select">
-              <!-- <nb-option *ngFor="let p of positions"  [value]="p" matRipple>{{ p }}</nb-option> -->
-              <nb-option value="a" matRipple>Teste</nb-option>
-              <nb-option value="b" matRipple>Teste 2</nb-option>
+            <label class="label">Beverage Price:</label>
+            <nb-select placeholder="- Select -" matRipple class="position-select">
+              <nb-option *ngFor="let item of bevaragePrice"  [value]="item.code" matRipple>{{ item.code }}</nb-option>
             </nb-select>
           </div>
           <div>
